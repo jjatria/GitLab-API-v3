@@ -2377,7 +2377,7 @@ sub edit_project {
         $project_id,
     );
 
-Sends a C<POST> request to C</pojects/fork/:project_id>.
+Sends a C<POST> request to C</projects/fork/:project_id>.
 
 =cut
 
@@ -2385,7 +2385,7 @@ sub fork_project {
     my $self = shift;
     croak 'fork_project must be called with 1 arguments' if @_ != 1;
     croak 'The #1 argument ($project_id) to fork_project must be a scalar' if ref($_[0]) or (!defined $_[0]);
-    my $path = sprintf('pojects/fork/%s', (map { uri_escape($_) } @_));
+    my $path = sprintf('projects/fork/%s', (map { uri_escape($_) } @_));
     $self->post( $path );
     return;
 }
@@ -2437,7 +2437,7 @@ sub project_members {
         $user_id,
     );
 
-Sends a C<GET> request to C</project/:project_id/members/:user_id> and returns the decoded/deserialized response body.
+Sends a C<GET> request to C</projects/:project_id/members/:user_id> and returns the decoded/deserialized response body.
 
 =cut
 
@@ -2446,7 +2446,7 @@ sub project_member {
     croak 'project_member must be called with 2 arguments' if @_ != 2;
     croak 'The #1 argument ($project_id) to project_member must be a scalar' if ref($_[0]) or (!defined $_[0]);
     croak 'The #2 argument ($user_id) to project_member must be a scalar' if ref($_[1]) or (!defined $_[1]);
-    my $path = sprintf('project/%s/members/%s', (map { uri_escape($_) } @_));
+    my $path = sprintf('projects/%s/members/%s', (map { uri_escape($_) } @_));
     return $self->get( $path );
 }
 
@@ -2585,7 +2585,7 @@ sub project_hooks {
         $hook_id,
     );
 
-Sends a C<GET> request to C</project/:project_id/hooks/:hook_id> and returns the decoded/deserialized response body.
+Sends a C<GET> request to C</projects/:project_id/hooks/:hook_id> and returns the decoded/deserialized response body.
 
 =cut
 
@@ -2594,7 +2594,7 @@ sub project_hook {
     croak 'project_hook must be called with 2 arguments' if @_ != 2;
     croak 'The #1 argument ($project_id) to project_hook must be a scalar' if ref($_[0]) or (!defined $_[0]);
     croak 'The #2 argument ($hook_id) to project_hook must be a scalar' if ref($_[1]) or (!defined $_[1]);
-    my $path = sprintf('project/%s/hooks/%s', (map { uri_escape($_) } @_));
+    my $path = sprintf('projects/%s/hooks/%s', (map { uri_escape($_) } @_));
     return $self->get( $path );
 }
 
